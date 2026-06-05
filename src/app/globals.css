@@ -113,7 +113,16 @@ a.win-btn:focus-visible {
   padding: 0 1rem;
 }
 
-.section {
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 56px);
+  padding-top: 56px;
+}
+
+main .section {
+  width: 100%;
   padding: 2rem 0 4rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid;
@@ -121,7 +130,7 @@ a.win-btn:focus-visible {
     var(--win-button-dark-shadow) var(--win-button-highlight);
 }
 
-.section:last-of-type {
+main .section:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
 }
@@ -407,7 +416,8 @@ a.win-btn:focus-visible {
 /* ---- Desktop empty state ---- */
 
 .desktop-empty {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 56px);
+  padding-top: 56px;
 }
 
 /* ---- Footer ---- */
