@@ -1,3 +1,37 @@
+/* ================================================================
+   Win98 Portfolio — Global Styles
+   Palette: classic Windows 98 teal, silver, navy, and beige
+   ================================================================ */
+
+:root {
+  --win-bg: #008080;
+  --win-surface: #c0c0c0;
+  --win-surface-light: #dfdfdf;
+  --win-text: #000000;
+  --win-text-alt: #ffffff;
+  --win-title-bg: #000080;
+  --win-title-active: #0000a8;
+  --win-button-face: #c0c0c0;
+  --win-button-highlight: #ffffff;
+  --win-button-shadow: #808080;
+  --win-button-dark-shadow: #404040;
+  --win-window-border: #808080;
+  --win-selection: #000080;
+  --win-link: #0000ff;
+  --win-status: #c0c0c0;
+  --win-desktop: #008080;
+  --win-accent: #ffcc00;
+  --win-warning: #ff0000;
+  --win-font: "Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva,
+    Verdana, sans-serif;
+  --win-font-mono: "Courier New", Courier, monospace;
+
+  /* spacing */
+  --bevel: 2px;
+  --section-gap: 2rem;
+  --content-width: 960px;
+}
+
 *,
 *::before,
 *::after {
@@ -7,12 +41,457 @@
 }
 
 html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--win-font);
+  font-size: 15px;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
 }
 
 body {
   min-height: 100vh;
+  background-color: var(--win-desktop);
+  color: var(--win-text);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+}
+
+/* ---- Win98 window chrome ---- */
+
+.win-window {
+  background: var(--win-surface);
+  border: 2px solid;
+  border-color: var(--win-button-highlight) var(--win-button-dark-shadow)
+    var(--win-button-dark-shadow) var(--win-button-highlight);
+  box-shadow:
+    inset 1px 1px 0 var(--win-button-highlight),
+    inset -1px -1px 0 var(--win-button-shadow),
+    1px 1px 0 var(--win-button-shadow);
+  padding: 0;
+}
+
+.win-title-bar {
+  background: linear-gradient(90deg, var(--win-title-active), #1084d0);
+  color: var(--win-text-alt);
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.win-title-bar span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win-body {
+  padding: 16px;
+}
+
+/* ---- Win98 buttons ---- */
+
+.win-btn {
+  display: inline-block;
+  font-family: var(--win-font);
+  font-size: 0.85rem;
+  min-width: 75px;
+  padding: 6px 20px;
+  background: var(--win-button-face);
+  color: var(--win-text);
+  border: 2px solid;
+  border-color: var(--win-button-highlight) var(--win-button-dark-shadow)
+    var(--win-button-dark-shadow) var(--win-button-highlight);
+  box-shadow:
+    inset 1px 1px 0 var(--win-button-highlight),
+    inset -1px -1px 0 var(--win-button-shadow);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  outline: none;
+}
+
+.win-btn:hover {
+  background: #d4d4d4;
+}
+
+.win-btn:active {
+  border-color: var(--win-button-dark-shadow) var(--win-button-highlight)
+    var(--win-button-highlight) var(--win-button-dark-shadow);
+  box-shadow:
+    inset 1px 1px 0 var(--win-button-shadow);
+  padding: 7px 19px 5px 21px;
+}
+
+.win-btn:focus-visible {
+  outline: 1px dotted var(--win-text);
+  outline-offset: -4px;
+}
+
+/* ---- Win98 input fields ---- */
+
+.win-input {
+  font-family: var(--win-font);
+  font-size: 0.85rem;
+  padding: 4px 6px;
+  background: var(--win-text-alt);
+  color: var(--win-text);
+  border: 2px solid;
+  border-color: var(--win-button-shadow) var(--win-button-highlight)
+    var(--win-button-highlight) var(--win-button-shadow);
+  box-shadow:
+    inset 1px 1px 0 var(--win-button-dark-shadow);
+  outline: none;
+}
+
+.win-input:focus {
+  border-color: var(--win-button-dark-shadow) var(--win-button-highlight)
+    var(--win-button-highlight) var(--win-button-dark-shadow);
+}
+
+/* ---- Layout ---- */
+
+.site-container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  scroll-margin-top: 60px;
+  padding: 3rem 0;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--win-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title::before {
+  content: "►";
+  font-size: 0.75rem;
+  color: var(--win-title-bg);
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--win-button-shadow);
+}
+
+/* ---- Utility ---- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ---- NavBar ---- */
+
+.win-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--win-surface);
+  border-bottom: 2px solid;
+  border-color: var(--win-button-highlight) var(--win-button-shadow)
+    var(--win-button-shadow) var(--win-button-highlight);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-brand {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--win-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-brand:hover {
+  color: var(--win-title-bg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-btn {
+  min-width: unset;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+}
+
+.nav-btn--active {
+  background: #d4d4d4;
+  border-color: var(--win-button-dark-shadow) var(--win-button-highlight)
+    var(--win-button-highlight) var(--win-button-dark-shadow);
+  box-shadow: inset 1px 1px 0 var(--win-button-shadow);
+}
+
+.nav-icon {
+  margin-right: 4px;
+}
+
+.nav-mobile {
+  display: none;
+}
+
+.nav-btn-mobile {
+  min-width: unset;
+  padding: 4px 10px;
+  font-size: 1rem;
+}
+
+/* ---- Hero ---- */
+
+.hero {
+  text-align: center;
+  padding: 6rem 0 4rem;
+  color: var(--win-text-alt);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+}
+
+.hero .hero-sub {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.hero .hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.hero-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  cursor: default;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.hero-icon .icon-img {
+  font-size: 2.5rem;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.4));
+}
+
+/* ---- Cards (projects & blog) ---- */
+
+.win-card {
+  background: var(--win-surface);
+  border: 2px solid;
+  border-color: var(--win-button-highlight) var(--win-button-dark-shadow)
+    var(--win-button-dark-shadow) var(--win-button-highlight);
+  box-shadow:
+    inset 1px 1px 0 var(--win-button-highlight),
+    inset -1px -1px 0 var(--win-button-shadow),
+    1px 1px 0 var(--win-button-shadow);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.win-card h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--win-title-bg);
+}
+
+.win-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.win-card-meta {
+  font-size: 0.75rem;
+  color: var(--win-button-shadow);
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Tags ---- */
+
+.win-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  margin: 0 4px 4px 0;
+  background: var(--win-surface-light);
+  border: 1px solid var(--win-button-shadow);
+  color: var(--win-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.win-tag:hover {
+  background: var(--win-button-highlight);
+}
+
+.win-tag--active {
+  background: var(--win-title-bg);
+  color: var(--win-text-alt);
+  border-color: var(--win-title-bg);
+}
+
+/* ---- Tech badges ---- */
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background: var(--win-button-highlight);
+  border: 1px solid var(--win-button-shadow);
+  color: var(--win-text);
+}
+
+/* ---- Blog search bar ---- */
+
+.blog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.blog-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 320px;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--win-button-shadow);
+  font-style: italic;
+}
+
+/* ---- Resume download ---- */
+
+.resume-download {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--win-button-shadow);
+}
+
+/* ---- Utility ---- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+    scroll-padding-top: 48px;
+  }
+  .section {
+    padding: 2rem 0;
+  }
+  .site-container {
+    padding: 0 0.75rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-mobile {
+    display: flex;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  .hero .hero-sub {
+    font-size: 0.9rem;
+  }
 }

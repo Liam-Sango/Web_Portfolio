@@ -1,0 +1,13 @@
+This is a pretty simple portfolio website, its divided into 4 sections with a selector bar at the top of the page allowing you to navigate between the three sections.
+
+The CSS should be styled like early windows 98 applications with a little bit of modern flair in its functionality, with retro style icons and stylized colouring in certian places similar to older computer comany logos or windows 93.net im not trying to recreate a desktop or allow for dragging different sections, instead the portfolio should be a traditional scrollable website designed to be viewable on both computers, phones and tablets.
+
+the three sections are fairly simple.
+
+
+The first section is an about me page with a resume downloader at the bottom, essentially just giving info about me witch ill help you fill out later.
+
+The second section is a project show off, where i can show projects with brief desciptions of what they entail in a blog style format, with links to their respective github repositories.
+
+The third section is a blog page, where i can upload custom blog posts on different topics with a tag system and date system for search functionality.
+
