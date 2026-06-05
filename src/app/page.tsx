@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import NavBar, { type SectionId } from "@/components/NavBar";
-import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import BlogSection from "@/components/BlogSection";
-import Taskbar from "@/components/Taskbar";
 
 export default function Home() {
   const [active, setActive] = useState<SectionId | null>(null);
@@ -18,14 +16,15 @@ export default function Home() {
   return (
     <>
       <NavBar active={active} onNavigate={handleNavigate} />
-      <HeroSection />
 
-      {active && (
+      {active ? (
         <main>
           {active === "about" && <AboutSection />}
           {active === "projects" && <ProjectsSection />}
           {active === "blog" && <BlogSection />}
         </main>
+      ) : (
+        <div className="desktop-empty" />
       )}
 
       <footer className="site-footer">
@@ -42,7 +41,6 @@ export default function Home() {
           </a>
         </div>
       </footer>
-      <Taskbar />
     </>
   );
 }

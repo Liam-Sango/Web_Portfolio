@@ -65,7 +65,6 @@ body {
       transparent 1px
     );
   background-size: 64px 64px;
-  padding-bottom: 38px; /* space for taskbar */
 }
 
 /* ---- Anchor buttons (match 98.css button look) ---- */
@@ -162,17 +161,22 @@ a.win-btn:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  gap: 0.5rem;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .nav-brand {
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--win-text);
   text-decoration: none;
   white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--win-font);
+  padding: 2px 6px;
 }
 
 .nav-brand:hover {
@@ -181,13 +185,16 @@ a.win-btn:focus-visible {
 
 .nav-links {
   display: flex;
-  gap: 4px;
+  gap: 3px;
+  flex: 1;
 }
 
-.nav-btn {
+.nav-links .nav-btn {
+  flex: 1;
   min-width: unset !important;
-  padding: 4px 14px !important;
-  font-size: 0.8rem !important;
+  padding: 8px 20px !important;
+  font-size: 0.9rem !important;
+  font-weight: bold;
 }
 
 .nav-btn--active {
@@ -196,7 +203,7 @@ a.win-btn:focus-visible {
     inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf,
     inset 2px 2px grey !important;
-  padding: 5px 13px 3px 15px !important;
+  padding: 9px 19px 7px 21px !important;
   background: #d4d4d4 !important;
 }
 
@@ -397,86 +404,10 @@ a.win-btn:focus-visible {
   margin-top: 1.5rem;
 }
 
-/* ---- Taskbar ---- */
+/* ---- Desktop empty state ---- */
 
-.win-taskbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 34px;
-  padding: 0 2px;
-  background: var(--win-surface);
-  border-top: 2px solid;
-  border-color: var(--win-button-highlight) var(--win-button-dark-shadow)
-    var(--win-button-dark-shadow) var(--win-button-highlight);
-  box-shadow: 0 -1px 0 var(--win-button-highlight);
-}
-
-.taskbar-start {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 26px;
-  padding: 0 8px;
-  font-family: var(--win-font);
-  font-size: 11px;
-  font-weight: bold;
-  background: var(--win-button-face);
-  color: var(--win-text);
-  border: none;
-  cursor: pointer;
-  box-shadow:
-    inset -1px -1px #0a0a0a,
-    inset 1px 1px #fff,
-    inset -2px -2px grey,
-    inset 2px 2px #dfdfdf;
-  outline: none;
-}
-
-.taskbar-start:active {
-  box-shadow:
-    inset -1px -1px #fff,
-    inset 1px 1px #0a0a0a,
-    inset -2px -2px #dfdfdf,
-    inset 2px 2px grey;
-  padding: 1px 7px 0 9px;
-}
-
-.taskbar-start:focus-visible {
-  outline: 1px dotted var(--win-text);
-  outline-offset: -4px;
-}
-
-.taskbar-start-logo {
-  width: 16px;
-  height: 16px;
-}
-
-.taskbar-clock {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  height: 26px;
-  padding: 0 8px;
-  font-family: var(--win-font);
-  font-size: 11px;
-  color: var(--win-text);
-  border: 2px solid;
-  border-color: var(--win-button-shadow) var(--win-button-highlight)
-    var(--win-button-highlight) var(--win-button-shadow);
-  box-shadow: inset 1px 1px 0 var(--win-button-dark-shadow);
-}
-
-.taskbar-tray {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding-right: 4px;
+.desktop-empty {
+  min-height: calc(100vh - 60px);
 }
 
 /* ---- Footer ---- */
