@@ -1,49 +1,55 @@
-"use client";
-
-import { useState } from "react";
-
 const NAV_ITEMS = [
-  { id: "about", label: "About Me", icon: "📋" },
-  { id: "projects", label: "Projects", icon: "💾" },
-  { id: "blog", label: "Blog", icon: "📝" },
-];
+  { id: "about", label: "About Me" },
+  { id: "projects", label: "Projects" },
+  { id: "blog", label: "Blog" },
+] as const;
 
-export default function NavBar() {
-  const [active, setActive] = useState("about");
+export type SectionId = (typeof NAV_ITEMS)[number]["id"];
 
+interface NavBarProps {
+  active: SectionId | null;
+  onNavigate: (id: SectionId) => void;
+}
+
+export default function NavBar({ active, onNavigate }: NavBarProps) {
   return (
     <nav className="win-navbar" role="navigation" aria-label="Site sections">
       <div className="site-container nav-inner">
-        <a href="#hero" className="nav-brand" onClick={() => setActive("")}>
+        <button
+          className="nav-brand"
+          onClick={() => onNavigate(NAV_ITEMS[0].id)}
+          type="button"
+        >
           🖥️ Liam Sango
-        </a>
+        </button>
 
         <div className="nav-links">
           {NAV_ITEMS.map((item) => (
-            <a
+            <button
               key={item.id}
-              href={`#${item.id}`}
               className={`win-btn nav-btn${active === item.id ? " nav-btn--active" : ""}`}
-              onClick={() => setActive(item.id)}
-              aria-current={active === item.id ? "true" : undefined}
+              onClick={() => onNavigate(item.id)}
+              aria-pressed={active === item.id}
+              type="button"
             >
-              <span className="nav-icon">{item.icon}</span>
               {item.label}
-            </a>
+            </button>
           ))}
         </div>
 
-        {/* Mobile hamburger placeholder — Win98 style compact nav */}
+        {/* Mobile compact nav */}
         <div className="nav-mobile" role="group" aria-label="Mobile navigation">
           {NAV_ITEMS.map((item) => (
-            <a
+            <button
               key={item.id}
-              href={`#${item.id}`}
-              className="win-btn nav-btn-mobile"
+              className={`win-btn nav-btn-mobile${active === item.id ? " nav-btn--active" : ""}`}
+              onClick={() => onNavigate(item.id)}
+              aria-pressed={active === item.id}
               aria-label={item.label}
+              type="button"
             >
-              {item.icon}
-            </a>
+              {item.label.slice(0, 3)}
+            </button>
           ))}
         </div>
       </div>

@@ -46,8 +46,6 @@ html {
   font-size: 15px;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-  scroll-padding-top: 60px;
 }
 
 body {
@@ -117,7 +115,6 @@ a.win-btn:focus-visible {
 }
 
 .section {
-  scroll-margin-top: 60px;
   padding: 2rem 0 4rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid;
@@ -509,7 +506,6 @@ a.win-btn:focus-visible {
 @media (max-width: 768px) {
   html {
     font-size: 14px;
-    scroll-padding-top: 48px;
   }
   .section {
     padding: 1.5rem 0 3rem;
