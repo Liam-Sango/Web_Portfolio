@@ -117,8 +117,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 60px);
-  padding-top: 60px;
+  min-height: calc(100vh - 36px);
+  padding-top: 36px;
 }
 
 main .section {
@@ -168,23 +168,23 @@ main .section:last-of-type {
 
 .nav-inner {
   display: flex;
-  align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  align-items: stretch;
+  padding: 0;
 }
 
 .nav-links {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
 }
 
 .nav-links .nav-btn {
   flex: 1;
   min-width: unset !important;
-  padding: 10px 20px !important;
+  padding: 0 20px !important;
   font-size: 0.95rem !important;
   font-weight: bold;
+  height: 100%;
 }
 
 .nav-btn--active {
@@ -193,7 +193,6 @@ main .section:last-of-type {
     inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf,
     inset 2px 2px grey !important;
-  padding: 11px 19px 9px 21px !important;
   background: #d4d4d4 !important;
 }
 
@@ -393,8 +392,8 @@ main .section:last-of-type {
 /* ---- Desktop empty state ---- */
 
 .desktop-empty {
-  min-height: calc(100vh - 60px);
-  padding-top: 60px;
+  min-height: calc(100vh - 36px);
+  padding-top: 36px;
 }
 
 /* ---- Footer ---- */
