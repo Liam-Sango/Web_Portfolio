@@ -2010,3 +2010,132 @@ html::after {
     display: none;
   }
 }
+
+/* ── NERV side panels (stock-driven MAGI readouts) ───────────────── */
+.hud-panel {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+/* sit inside the gutter, clear of the thin .hud-side vertical labels */
+.hud-panel--left {
+  left: 22px;
+  align-items: flex-start;
+  text-align: left;
+}
+.hud-panel--right {
+  right: 22px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.hud-panel-head {
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-dim);
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 3px;
+  width: 100%;
+}
+
+.hud-panel-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 0;
+  /* fall back to a calm rate if the inline var is missing */
+  --flick-rate: 1.8s;
+  animation: hudFlick var(--flick-rate) steps(2, end) infinite;
+}
+
+.hud-panel-id {
+  color: var(--accent);
+  font-size: 0.58rem;
+}
+.hud-panel-sym {
+  color: var(--text);
+  font-weight: 600;
+}
+.hud-panel-sync {
+  font-size: 0.5rem;
+}
+.hud-panel-bar {
+  letter-spacing: -0.05em;
+  font-size: 0.62rem;
+}
+
+.hud-panel-block--up .hud-panel-id,
+.hud-panel-block--up .hud-panel-bar {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--accent-glow);
+}
+.hud-panel-block--down .hud-panel-id,
+.hud-panel-block--down .hud-panel-bar {
+  color: var(--amber, #ffb347);
+  text-shadow: 0 0 6px rgba(255, 80, 40, 0.5);
+}
+
+.hud-panel-pattern {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+}
+.hud-panel-pattern strong {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+.hud-panel-pattern.hud-panel-block--up strong {
+  color: var(--accent);
+}
+.hud-panel-pattern.hud-panel-block--down strong {
+  color: var(--amber, #ffb347);
+}
+
+@keyframes hudFlick {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.62;
+  }
+  46% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  71% {
+    opacity: 0.85;
+  }
+}
+
+/* gutters vanish below this; hide panels so they never overlap content */
+@media (max-width: 1240px) {
+  .hud-panel {
+    display: none;
+  }
+}
+
+/* respect reduced-motion: freeze the flicker to a steady readout */
+@media (prefers-reduced-motion: reduce) {
+  .hud-panel-block {
+    animation: none;
+    opacity: 0.85;
+  }
+}
