@@ -22,89 +22,80 @@ export default function BlogSection() {
   );
 
   return (
-    <section id="blog" className="section" aria-labelledby="blog-heading">
-      <div className="site-container">
-        <div className="window">
-          <div className="title-bar">
-            <div className="title-bar-text">📝 Blog</div>
-            <div className="title-bar-controls">
-              <button aria-label="Minimize"></button>
-              <button aria-label="Maximize"></button>
-              <button aria-label="Close"></button>
-            </div>
-          </div>
-          <div className="window-body">
-            <h2 id="blog-heading" className="section-title">
-              Blog
-            </h2>
+    <section className="glass-card section" aria-labelledby="blog-heading">
+      <span className="section-eyebrow">05 — Writing</span>
+      <h2 id="blog-heading" className="section-heading">
+        From the Blog
+      </h2>
+      <p className="section-intro">
+        Notes on engineering, design, and the tools I rely on.
+      </p>
 
-            {/* Search + tag filter toolbar */}
-            <div className="blog-toolbar">
-              <label htmlFor="blog-search" className="sr-only">
-                Search posts
-              </label>
-              <input
-                id="blog-search"
-                type="text"
-                className="blog-search"
-                placeholder="🔍 Search posts..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+      {/* Search */}
+      <div className="blog-toolbar">
+        <label htmlFor="blog-search" className="sr-only">
+          Search posts
+        </label>
+        <input
+          id="blog-search"
+          type="text"
+          className="search-input"
+          placeholder="Search posts…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
 
-            {allTags.length > 0 && (
-              <div className="blog-tags" role="group" aria-label="Filter by tag">
-                <button
-                  className={`win-tag${!activeTag ? " win-tag--active" : ""}`}
-                  onClick={() => setActiveTag(undefined)}
-                >
-                  All
-                </button>
-                {allTags.map((tag) => (
-                  <button
-                    key={tag}
-                    className={`win-tag${activeTag === tag ? " win-tag--active" : ""}`}
-                    onClick={() =>
-                      setActiveTag(activeTag === tag ? undefined : tag)
-                    }
-                  >
+      {/* Tag filter */}
+      {allTags.length > 0 && (
+        <div className="blog-filters" role="group" aria-label="Filter by tag">
+          <button
+            type="button"
+            className={`tag${!activeTag ? " tag--active" : ""}`}
+            onClick={() => setActiveTag(undefined)}
+            aria-pressed={!activeTag}
+          >
+            All
+          </button>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              className={`tag${activeTag === tag ? " tag--active" : ""}`}
+              onClick={() => setActiveTag(activeTag === tag ? undefined : tag)}
+              aria-pressed={activeTag === tag}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Posts */}
+      {visiblePosts.length === 0 ? (
+        <p className="empty-state">
+          {blogPosts.length === 0
+            ? "No posts yet. Check back soon!"
+            : "No posts match your search."}
+        </p>
+      ) : (
+        <div className="blog-list">
+          {visiblePosts.map((post) => (
+            <article key={post.id} className="blog-post">
+              <h3>{post.title}</h3>
+              <p className="card-meta">{formatDate(post.date)}</p>
+              <p>{post.excerpt}</p>
+              <div className="tag-row">
+                {post.tags.map((tag) => (
+                  <span key={tag} className="badge">
                     {tag}
-                  </button>
+                  </span>
                 ))}
               </div>
-            )}
-
-            {/* Post list */}
-            {visiblePosts.length === 0 ? (
-              <p className="blog-empty">
-                {blogPosts.length === 0
-                  ? "No posts yet. Check back soon!"
-                  : "No posts match your search."}
-              </p>
-            ) : (
-              visiblePosts.map((post) => (
-                <article key={post.id} className="win-card">
-                  <h3>{post.title}</h3>
-                  <p className="win-card-meta">{formatDate(post.date)}</p>
-                  <p>{post.excerpt}</p>
-                  <div className="blog-tags">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="win-tag">{tag}</span>
-                    ))}
-                  </div>
-                </article>
-              ))
-            )}
-          </div>
-          <div className="status-bar">
-            <p className="status-bar-field">
-              {visiblePosts.length} post{visiblePosts.length !== 1 ? "s" : ""}
-            </p>
-            <p className="status-bar-field">Blog</p>
-          </div>
+            </article>
+          ))}
         </div>
-      </div>
+      )}
     </section>
   );
 }
