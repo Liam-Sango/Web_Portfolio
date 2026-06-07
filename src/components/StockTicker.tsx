@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // failure) the ticker falls back to flavor readouts so it never looks broken.
 const KEY = process.env.NEXT_PUBLIC_FINNHUB_KEY;
 
-const SYMBOLS = ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "TSLA", "META", "AMD"];
+const SYMBOLS = ["LMT", "PLTR", "RTX", "NOC", "GD", "BA", "BAH", "HII"];
 
 const POLL_MS = 45_000;
 
