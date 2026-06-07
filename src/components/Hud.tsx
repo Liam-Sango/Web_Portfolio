@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import StockTicker from "@/components/StockTicker";
+import SidePanels from "@/components/SidePanels";
 
 function clock(d: Date): string {
   const p = (n: number) => String(n).padStart(2, "0");
@@ -47,6 +48,9 @@ export default function Hud() {
       {/* vertical side labels */}
       <div className="hud-side hud-side--left jp">特務機関ネルフ</div>
       <div className="hud-side hud-side--right">CODE : 601 — MAGI</div>
+
+      {/* stock-driven MAGI readouts in the gutters */}
+      <SidePanels />
 
       {/* bottom market-data ticker (live Finnhub feed) */}
       <StockTicker />
