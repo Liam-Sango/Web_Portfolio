@@ -2,9 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// One boot per browser session — flips to "1" once the sequence has played.
-const SESSION_KEY = "nerv-booted";
-
 interface BootLine {
   label: string;
   jp?: string;
@@ -49,8 +46,7 @@ const INTERVAL = 78;
 type Phase = "running" | "ready" | "out" | "hidden";
 
 export default function BootSequence() {
-  // Visible on first paint (covers the page) so there's no flash of the site
-  // before we know whether this session already booted.
+  // Runs whenever this component mounts (i.e. each time NERV mode is enabled).
   const [phase, setPhase] = useState<Phase>("running");
   const [tick, setTick] = useState(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -61,14 +57,7 @@ export default function BootSequence() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    let alreadyBooted = false;
-    try {
-      alreadyBooted = sessionStorage.getItem(SESSION_KEY) === "1";
-    } catch {
-      /* sessionStorage unavailable — treat as not booted */
-    }
-
-    if (alreadyBooted || reduce) {
+    if (reduce) {
       setPhase("hidden");
       return;
     }
@@ -95,11 +84,6 @@ export default function BootSequence() {
   }, []);
 
   function finish() {
-    try {
-      sessionStorage.setItem(SESSION_KEY, "1");
-    } catch {
-      /* ignore */
-    }
     setPhase("hidden");
   }
 
