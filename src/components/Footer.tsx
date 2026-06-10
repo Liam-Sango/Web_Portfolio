@@ -1,6 +1,11 @@
+"use client";
+
 import { SOCIALS } from "@/lib/site";
+import { useNervMode } from "@/lib/useNervMode";
 
 export default function Footer() {
+  const { toggle } = useNervMode();
+
   return (
     <footer className="site-footer">
       <div className="site-container footer-inner">
@@ -16,6 +21,16 @@ export default function Footer() {
           <a href={SOCIALS.source} target="_blank" rel="noopener noreferrer">
             Source
           </a>
+          {/* Subtle easter-egg toggle for NERV mode (also via typing `nerv`). */}
+          <button
+            type="button"
+            className="nerv-glyph"
+            onClick={toggle}
+            aria-label="Toggle NERV mode"
+            title="NERV"
+          >
+            <span aria-hidden="true">⬡</span>
+          </button>
         </div>
       </div>
     </footer>
