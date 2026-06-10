@@ -48,10 +48,10 @@ export default function HeroSection() {
 
       <div className="hero-meta">
         <span>
-          <span className="status-dot" aria-hidden="true" /> Available for new
-          work
+          <span className="status-dot" aria-hidden="true" /> Available for work
         </span>
-        <span>📍 Remote · Australia</span>
+        <span>Remote · Australia</span>
+        <span>Last updated 2026.06</span>
       </div>
     </section>
   );
