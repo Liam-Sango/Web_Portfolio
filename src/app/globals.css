@@ -5,46 +5,108 @@
    ================================================================ */
 
 :root {
-  /* ---- Core ---- */
+  /* ---- Graphite & Phosphor — DARK (default / fallback) ---- */
+  --bg: #14161a;
+  --bg-2: #101216;
+  --panel: #1b1e23;
+  --panel-2: #202329;
+  --text: #e7e6e1;
+  --text-muted: #9aa0a3;
+  --text-dim: #71767a;
+  --line: #2a2e34;
+  --line-soft: #23262b;
+  --accent: #5fae86;
+  --accent-hover: #74c79b;
+  --accent-wash: rgba(95, 174, 134, 0.1);
+  /* label color that sits ON an accent fill, and the fill itself (kept AA) */
+  --on-accent: #14161a;
+  --btn-primary-bg: var(--accent);
+
+  /* ---- Shape ---- */
+  --radius: 4px;
+  --radius-pill: 4px;
+  --notch: 0px;
+
+  /* ---- Type ---- */
+  --font-display: var(--font-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-body: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, Menlo,
+    monospace;
+
+  /* ---- Layout ---- */
+  --content-width: 1000px;
+  --nav-height: 60px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14161a;
+  --bg-2: #101216;
+  --panel: #1b1e23;
+  --panel-2: #202329;
+  --text: #e7e6e1;
+  --text-muted: #9aa0a3;
+  --text-dim: #71767a;
+  --line: #2a2e34;
+  --line-soft: #23262b;
+  --accent: #5fae86;
+  --accent-hover: #74c79b;
+  --accent-wash: rgba(95, 174, 134, 0.1);
+  --on-accent: #14161a;
+  --btn-primary-bg: var(--accent);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f3ee;
+  --bg-2: #eeece4;
+  --panel: #fbfaf6;
+  --panel-2: #f3f1ea;
+  --text: #1b1d1f;
+  --text-muted: #5c5f63;
+  --text-dim: #80837f;
+  --line: #dcd9cf;
+  --line-soft: #e7e4db;
+  --accent: #2f7d57;
+  --accent-hover: #266546;
+  --accent-wash: rgba(47, 125, 87, 0.1);
+  /* on light, fill with the darker accent + white label so the label clears AA */
+  --on-accent: #ffffff;
+  --btn-primary-bg: var(--accent-hover);
+}
+
+/* ================================================================
+   NERV layer — variable + font overrides (skin sits on top of any theme)
+   ================================================================ */
+html[data-nerv] {
   --bg: #0a0a0b;
   --bg-2: #0e0e10;
   --panel: #0c0c0e;
   --panel-2: #111114;
-
-  /* ---- NERV palette (green readout) ---- */
   --accent: #2bff88;
   --accent-dim: #1f9e5a;
   --accent-bright: #aaff33;
+  --accent-hover: #aaff33;
   --red: #e60012;
   --green: #2bff88;
   --blue: #36c5ff;
-
-  /* ---- Lines & text ---- */
   --line: rgba(43, 255, 136, 0.3);
   --line-soft: rgba(43, 255, 136, 0.15);
   --grid: rgba(43, 255, 136, 0.05);
   --text: #ededed;
   --text-muted: #9a9a93;
   --text-dim: #61675f;
-
-  /* ---- Accent washes ---- */
   --accent-wash: rgba(43, 255, 136, 0.1);
   --accent-glow: rgba(43, 255, 136, 0.5);
-
-  /* ---- Shape ---- */
+  --on-accent: #000;
+  --btn-primary-bg: var(--accent);
   --notch: 14px;
   --radius: 0px;
   --radius-pill: 0px;
-
-  /* ---- Type ---- */
-  --font-display: var(--font-display), "Chakra Petch", system-ui, sans-serif;
-  --font-body: var(--font-body), "Saira", system-ui, sans-serif;
-  --font-mono: var(--font-mono-jb), "JetBrains Mono", ui-monospace, Menlo,
+  --font-display: var(--font-chakra), "Chakra Petch", system-ui, sans-serif;
+  --font-body: var(--font-saira), "Saira", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, Menlo,
     monospace;
-
-  /* ---- Layout ---- */
-  --content-width: 1000px;
-  --nav-height: 60px;
 }
 
 *,
@@ -59,7 +121,6 @@ html {
   font-family: var(--font-body);
   font-size: 16px;
   scroll-behavior: smooth;
-  color-scheme: dark;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -67,7 +128,7 @@ body {
   min-height: 100vh;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,8 +136,27 @@ body {
   position: relative;
 }
 
-/* ---- Backdrop: hex/line grid + vignette ---- */
-body::before {
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---- NERV global effects (only in NERV mode) ---- */
+html[data-nerv] {
+  color-scheme: dark;
+}
+
+/* hex/line grid + vignette backdrop */
+html[data-nerv] body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -89,8 +169,7 @@ body::before {
   background-size: 44px 44px, 44px 44px, 100% 100%;
 }
 
-/* radial vignette so edges fall to black */
-body::after {
+html[data-nerv] body::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -103,8 +182,8 @@ body::after {
   );
 }
 
-/* ---- CRT scanline overlay ---- */
-html::after {
+/* CRT scanline overlay + flicker */
+html[data-nerv]::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -118,21 +197,11 @@ html::after {
   );
   mix-blend-mode: multiply;
   opacity: 0.55;
+  animation: crtFlicker 7s linear infinite;
 }
 
-::selection {
-  background: var(--accent);
-  color: #000;
-}
-
-a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-/* Reusable hazard stripe */
-.hazard,
-.btn--primary::before {
+html[data-nerv] .hazard,
+html[data-nerv] .btn--primary::before {
   background-image: repeating-linear-gradient(
     -45deg,
     var(--accent) 0,
@@ -1287,7 +1356,7 @@ main {
    CRT flicker (global, over scanlines)
    ================================================================ */
 
-html::after {
+html[data-nerv]::after {
   animation: crtFlicker 7s linear infinite;
 }
 
@@ -2023,7 +2092,7 @@ html::after {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  html::after {
+  html[data-nerv]::after {
     display: none;
   }
 }

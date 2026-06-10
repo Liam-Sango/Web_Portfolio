@@ -1,32 +1,54 @@
 import type { Metadata } from "next";
-import { Chakra_Petch, Saira, JetBrains_Mono } from "next/font/google";
+import {
+  Chakra_Petch,
+  Saira,
+  JetBrains_Mono,
+  Space_Grotesk,
+  IBM_Plex_Sans,
+  IBM_Plex_Mono,
+} from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import NervLayer from "@/components/NervLayer";
 import "@/app/globals.css";
 
-// Display — an angular, cut-cornered technical face for that NERV terminal /
-// HUD readout feel (not Inter/Roboto/system).
+// ---- NERV mode faces (angular terminal identity) ----
 const chakra = Chakra_Petch({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-chakra",
   weight: ["400", "500", "600", "700"],
 });
-
-// Body — an industrial humanist sans that stays readable at length.
 const saira = Saira({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-body",
+  variable: "--font-saira",
   weight: ["400", "500", "600", "700"],
 });
-
-// Mono — technical labels, metadata, badges.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-mono-jb",
+  variable: "--font-jetbrains",
+});
+
+// ---- Professional theme faces (Graphite & Phosphor) ----
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-grotesk",
+  weight: ["400", "500", "600", "700"],
+});
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-plex-sans",
+  weight: ["400", "500", "600"],
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-plex-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -60,9 +82,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${chakra.variable} ${saira.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable} ${chakra.variable} ${saira.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        {/* Set the light/dark theme before first paint to avoid a flash. Reads
+            the saved choice, else the OS preference. Does NOT touch data-nerv. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('theme');" +
+              "if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}" +
+              "document.documentElement.setAttribute('data-theme',t);}" +
+              "catch(e){document.documentElement.setAttribute('data-theme','dark');}})();",
+          }}
+        />
         <link rel="icon" href={FAVICON} />
       </head>
       <body>
