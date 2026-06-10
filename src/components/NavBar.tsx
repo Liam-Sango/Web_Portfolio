@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/lib/useTheme";
 
 const NAV_ITEMS = [
   { id: "about", label: "About" },
@@ -15,12 +16,16 @@ const NAV_ITEMS = [
 
 export type SectionId = (typeof NAV_ITEMS)[number]["id"];
 
+// Two-digit mono index shown before each tab label (01..06).
+const pad2 = (n: number) => String(n + 1).padStart(2, "0");
+
 export default function NavBar() {
   const pathname = usePathname();
   const onHome = pathname === "/";
   // On the home page the active section is driven by the URL hash; on detail
   // pages it's derived from the path (e.g. /blog/* → "blog").
   const [hash, setHash] = useState("");
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const sync = () => setHash(window.location.hash.replace(/^#/, ""));
@@ -56,11 +61,19 @@ export default function NavBar() {
         )}
 
         <div className="nav-tabs">
-          {NAV_ITEMS.map((item) => {
+          {NAV_ITEMS.map((item, i) => {
             const className = `nav-tab${
               active === item.id ? " nav-tab--active" : ""
             }`;
             const current = active === item.id ? "page" : undefined;
+            const inner = (
+              <>
+                <span className="nav-tab-index" aria-hidden="true">
+                  {pad2(i)}
+                </span>
+                {item.label}
+              </>
+            );
             // Same-page hash anchors fire `hashchange` (Next <Link> uses
             // pushState, which does not) — so the home page must use <a>.
             return onHome ? (
@@ -70,7 +83,7 @@ export default function NavBar() {
                 className={className}
                 aria-current={current}
               >
-                {item.label}
+                {inner}
               </a>
             ) : (
               <Link
@@ -79,10 +92,22 @@ export default function NavBar() {
                 className={className}
                 aria-current={current}
               >
-                {item.label}
+                {inner}
               </Link>
             );
           })}
+
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggle}
+            aria-label={
+              theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+            }
+            title="Toggle light/dark theme"
+          >
+            <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+          </button>
         </div>
       </div>
     </nav>
