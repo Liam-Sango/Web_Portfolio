@@ -211,6 +211,437 @@ html[data-nerv] .btn--primary::before {
   );
 }
 
+/* ---- NERV component skins (restored at higher specificity) ---- */
+
+/* Navigation */
+html[data-nerv] .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  display: flex;
+  align-items: stretch;
+  background: rgba(8, 8, 9, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 0 rgba(255, 106, 0, 0.08);
+}
+
+html[data-nerv] .nav-brand .brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  clip-path: polygon(0 0, 80% 0, 100% 30%, 100% 100%, 20% 100%, 0 70%);
+}
+
+html[data-nerv] .nav-brand .brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+html[data-nerv] .nav-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.15s linear, background 0.15s linear;
+}
+
+html[data-nerv] .nav-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
+}
+
+html[data-nerv] .nav-tab:hover {
+  color: var(--text);
+  background: var(--accent-wash);
+}
+
+html[data-nerv] .nav-tab:hover::after {
+  transform: scaleX(1);
+}
+
+html[data-nerv] .nav-tab--active {
+  color: var(--accent);
+}
+
+html[data-nerv] .nav-tab--active::after {
+  transform: scaleX(1);
+}
+
+html[data-nerv] .nav-tab:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -3px;
+}
+
+/* Panels / cards */
+html[data-nerv] .glass-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 2.4rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% 100%,
+    var(--notch) 100%,
+    0 calc(100% - var(--notch))
+  );
+}
+
+html[data-nerv] .glass-card::before,
+html[data-nerv] .glass-card::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+html[data-nerv] .glass-card::before {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+html[data-nerv] .glass-card::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+/* Section masthead */
+html[data-nerv] .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+html[data-nerv] .section-eyebrow::before {
+  content: "▶";
+  font-size: 0.6rem;
+  color: var(--accent);
+}
+
+html[data-nerv] .section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+/* Buttons */
+html[data-nerv] .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  overflow: hidden;
+  background: transparent;
+  color: var(--accent);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+  transition: color 0.15s linear, background 0.15s linear, box-shadow 0.2s ease;
+}
+
+html[data-nerv] .btn:hover {
+  background: var(--accent-wash);
+  box-shadow: 0 0 18px -4px var(--accent-glow), inset 0 0 18px -10px var(--accent);
+}
+
+html[data-nerv] .btn--primary {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+}
+
+html[data-nerv] .btn--primary:hover {
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 22px -4px var(--accent-glow);
+}
+
+html[data-nerv] .btn--ghost {
+  color: var(--text);
+  border-color: var(--line);
+}
+
+html[data-nerv] .btn--ghost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Tags / badges */
+html[data-nerv] .badge {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.22rem 0.55rem;
+  background: var(--accent-wash);
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+}
+
+html[data-nerv] .badge::before {
+  content: "+";
+  margin-right: 0.35rem;
+  color: var(--accent);
+}
+
+html[data-nerv] .tag {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.14s linear, background 0.14s linear, border-color 0.14s linear;
+}
+
+html[data-nerv] .tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+html[data-nerv] .tag--active {
+  color: #000;
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+/* Hero */
+html[data-nerv] .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 3rem 2.4rem;
+}
+
+html[data-nerv] .hero {
+  border-top: 3px solid transparent;
+  border-image: repeating-linear-gradient(
+      -45deg,
+      var(--accent) 0,
+      var(--accent) 9px,
+      #000 9px,
+      #000 18px
+    )
+    3;
+}
+
+html[data-nerv] .hero-greeting {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  animation: rise 0.5s ease both;
+}
+
+html[data-nerv] .hero-greeting::before {
+  content: "// ";
+  color: var(--text-dim);
+}
+
+html[data-nerv] .hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  color: var(--text);
+  animation: rise 0.5s ease 0.06s both;
+}
+
+html[data-nerv] .hero-title .grad {
+  color: var(--accent);
+  text-shadow: 0 0 28px var(--accent-glow);
+}
+
+html[data-nerv] .hero-role {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text);
+  max-width: 32ch;
+  animation: rise 0.5s ease 0.12s both;
+}
+
+html[data-nerv] .hero-role .grad {
+  color: var(--accent);
+}
+
+html[data-nerv] .hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.4rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  animation: rise 0.5s ease 0.3s both;
+}
+
+html[data-nerv] .status-dot {
+  width: 9px;
+  height: 9px;
+  background: var(--green);
+  box-shadow: 0 0 10px 0 var(--green);
+  animation: blink 1.6s steps(1, end) infinite;
+}
+
+html[data-nerv] .hero-kanji {
+  position: absolute;
+  z-index: 0;
+  top: -0.5rem;
+  right: 0.5rem;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 700;
+  font-size: clamp(6rem, 18vw, 12rem);
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+}
+
+html[data-nerv] .caret {
+  display: inline-block;
+  width: 0.6ch;
+  height: 0.88em;
+  margin-left: 0.12em;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  vertical-align: -0.06em;
+  animation: blink 1.05s steps(1, end) infinite;
+}
+
+html[data-nerv] .hero-gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+html[data-nerv] .gauge-label {
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+html[data-nerv] .gauge-track {
+  position: relative;
+  flex: 1;
+  max-width: 260px;
+  height: 8px;
+  border: 1px solid var(--line);
+  background: rgba(43, 255, 136, 0.04);
+  overflow: hidden;
+}
+
+html[data-nerv] .gauge-fill {
+  position: absolute;
+  inset: 0 100% 0 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0,
+    var(--accent) 6px,
+    transparent 6px,
+    transparent 9px
+  );
+  box-shadow: 0 0 12px var(--accent-glow);
+  animation: gaugeFill 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+html[data-nerv] .gauge-val {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* ================================================================
    Layout
    ================================================================ */
@@ -240,11 +671,10 @@ main {
   height: var(--nav-height);
   display: flex;
   align-items: stretch;
-  background: rgba(8, 8, 9, 0.92);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 0 rgba(255, 106, 0, 0.08);
 }
 
 .nav-inner {
@@ -272,22 +702,22 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--accent);
-  color: #000;
+  width: 30px;
+  height: 30px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
-  clip-path: polygon(0 0, 80% 0, 100% 30%, 100% 100%, 20% 100%, 0 70%);
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: var(--radius);
 }
 
 .nav-brand .brand-name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
   color: var(--text);
 }
 
@@ -304,30 +734,38 @@ main {
   display: none;
 }
 
+/* mono index that prefixes each tab label (added in NavBar, Task 9) */
+.nav-tab-index {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--text-dim);
+  margin-right: 0.5ch;
+}
+
 .nav-tab {
   appearance: none;
   border: none;
   background: transparent;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  padding: 0 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0 0.85rem;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   white-space: nowrap;
   position: relative;
-  transition: color 0.15s linear, background 0.15s linear;
+  transition: color 0.15s ease;
 }
 
 .nav-tab::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 0.85rem;
+  right: 0.85rem;
   bottom: 0;
   height: 2px;
   background: var(--accent);
@@ -338,24 +776,51 @@ main {
 
 .nav-tab:hover {
   color: var(--text);
-  background: var(--accent-wash);
-}
-
-.nav-tab:hover::after {
-  transform: scaleX(1);
 }
 
 .nav-tab--active {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .nav-tab--active::after {
   transform: scaleX(1);
 }
 
+.nav-tab--active .nav-tab-index {
+  color: var(--accent);
+}
+
 .nav-tab:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: -3px;
+  border-radius: 2px;
+}
+
+/* light/dark toggle button (added in NavBar, Task 9) */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  align-self: center;
+  margin-left: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ================================================================
@@ -366,81 +831,54 @@ main {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   padding: 2.4rem;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--notch)) 0,
-    100% var(--notch),
-    100% 100%,
-    var(--notch) 100%,
-    0 calc(100% - var(--notch))
-  );
 }
 
-/* corner brackets (top-left + bottom-right) */
+/* corner brackets are a NERV-only flourish */
 .glass-card::before,
 .glass-card::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
-}
-
-.glass-card::before {
-  top: 8px;
-  left: 8px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-}
-
-.glass-card::after {
-  bottom: 8px;
-  right: 8px;
-  border-bottom: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
+  content: none;
 }
 
 .section {
   width: 100%;
 }
 
-/* eyebrow → system readout label */
+/* ---- Section masthead rhythm ---- */
 .section-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--accent);
-  margin-bottom: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .section-eyebrow::before {
-  content: "▶";
-  font-size: 0.6rem;
-  color: var(--accent);
+  content: none;
 }
 
 .section-heading {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 1.02;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
   color: var(--text);
 }
 
 .section-intro {
   color: var(--text-muted);
-  font-size: 1.04rem;
+  font-size: 1.02rem;
   margin-bottom: 2rem;
-  max-width: 62ch;
+  max-width: 64ch;
 }
 
 .prose p {
@@ -454,7 +892,7 @@ main {
 }
 
 .prose strong {
-  color: var(--accent);
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -488,29 +926,24 @@ main {
   gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.7rem 1.3rem;
-  border: 1px solid var(--accent);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  padding: 0.62rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   cursor: pointer;
   overflow: hidden;
   background: transparent;
-  color: var(--accent);
-  clip-path: polygon(
-    0 0,
-    calc(100% - 8px) 0,
-    100% 8px,
-    100% 100%,
-    8px 100%,
-    0 calc(100% - 8px)
-  );
-  transition: color 0.15s linear, background 0.15s linear, box-shadow 0.2s ease;
+  color: var(--text);
+  clip-path: none;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
 .btn:hover {
-  background: var(--accent-wash);
-  box-shadow: 0 0 18px -4px var(--accent-glow), inset 0 0 18px -10px var(--accent);
+  border-color: var(--text-dim);
+  background: var(--panel-2);
+  box-shadow: none;
 }
 
 .btn:active {
@@ -518,15 +951,16 @@ main {
 }
 
 .btn--primary {
-  background: var(--accent);
-  color: #000;
-  font-weight: 700;
+  background: var(--btn-primary-bg);
+  color: var(--on-accent);
+  border-color: var(--btn-primary-bg);
+  font-weight: 600;
 }
 
 .btn--primary:hover {
-  background: var(--accent-bright);
-  border-color: var(--accent-bright);
-  box-shadow: 0 0 22px -4px var(--accent-glow);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .btn--ghost {
@@ -537,11 +971,12 @@ main {
 .btn--ghost:hover {
   color: var(--accent);
   border-color: var(--accent);
+  background: transparent;
 }
 
 .btn:focus-visible {
-  outline: 1px solid var(--accent-bright);
-  outline-offset: 3px;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .btn-row {
@@ -560,18 +995,17 @@ main {
   white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0.02em;
   padding: 0.22rem 0.55rem;
-  background: var(--accent-wash);
+  background: transparent;
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   color: var(--text-muted);
 }
 
 .badge::before {
-  content: "+";
-  margin-right: 0.35rem;
-  color: var(--accent);
+  content: none;
 }
 
 .tag {
@@ -580,14 +1014,15 @@ main {
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0.02em;
   padding: 0.3rem 0.75rem;
   background: transparent;
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   color: var(--text-muted);
   cursor: pointer;
-  transition: color 0.14s linear, background 0.14s linear, border-color 0.14s linear;
+  transition: color 0.14s ease, border-color 0.14s ease;
 }
 
 .tag:hover {
@@ -596,9 +1031,9 @@ main {
 }
 
 .tag--active {
-  color: #000;
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--on-accent);
+  background: var(--btn-primary-bg);
+  border-color: var(--btn-primary-bg);
   font-weight: 600;
 }
 
@@ -618,59 +1053,45 @@ main {
   flex-direction: column;
   gap: 1.35rem;
   padding: 3rem 2.4rem;
-}
-
-/* hazard strip across the very top of the hero panel */
-.hero {
-  border-top: 3px solid transparent;
-  border-image: repeating-linear-gradient(
-      -45deg,
-      var(--accent) 0,
-      var(--accent) 9px,
-      #000 9px,
-      #000 18px
-    )
-    3;
+  border-top: none;
+  border-image: none;
 }
 
 .hero-greeting {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.24em;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
-  animation: rise 0.5s ease both;
+  color: var(--text-dim);
 }
 
 .hero-greeting::before {
-  content: "// ";
-  color: var(--text-dim);
+  content: none;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 10vw, 6rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.005em;
-  line-height: 0.95;
+  font-size: clamp(2.6rem, 8vw, 4.5rem);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
   color: var(--text);
-  animation: rise 0.5s ease 0.06s both;
 }
 
 .hero-title .grad {
-  color: var(--accent);
-  text-shadow: 0 0 28px var(--accent-glow);
+  color: var(--text);
+  text-shadow: none;
 }
 
 .hero-role {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  font-size: clamp(1.2rem, 3.2vw, 1.7rem);
   font-weight: 500;
+  letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--text);
-  max-width: 32ch;
-  animation: rise 0.5s ease 0.12s both;
+  max-width: 34ch;
 }
 
 .hero-role .grad {
@@ -680,8 +1101,7 @@ main {
 .hero-lead {
   color: var(--text-muted);
   font-size: 1.06rem;
-  max-width: 56ch;
-  animation: rise 0.5s ease 0.18s both;
+  max-width: 58ch;
 }
 
 .hero .btn-row {
@@ -694,13 +1114,12 @@ main {
   gap: 1.5rem;
   margin-top: 0.4rem;
   padding-top: 1.3rem;
-  border-top: 1px solid var(--line-soft);
+  border-top: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-dim);
-  animation: rise 0.5s ease 0.3s both;
 }
 
 .hero-meta span {
@@ -709,12 +1128,21 @@ main {
   gap: 0.5rem;
 }
 
+/* steady status dot in the professional theme (NERV makes it blink) */
 .status-dot {
-  width: 9px;
-  height: 9px;
-  background: var(--green);
-  box-shadow: 0 0 10px 0 var(--green);
-  animation: blink 1.6s steps(1, end) infinite;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: none;
+  animation: none;
+}
+
+/* decorative NERV-only hero elements: hidden in the professional theme */
+.hero-kanji,
+.caret,
+.hero-gauge {
+  display: none;
 }
 
 @keyframes rise {
@@ -1948,82 +2376,10 @@ html[data-nerv]::after {
   z-index: 1;
 }
 
-.hero-kanji {
-  position: absolute;
-  z-index: 0;
-  top: -0.5rem;
-  right: 0.5rem;
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
-  font-weight: 700;
-  font-size: clamp(6rem, 18vw, 12rem);
-  line-height: 1;
-  color: var(--accent);
-  opacity: 0.05;
-  pointer-events: none;
-  user-select: none;
-}
-
-.caret {
-  display: inline-block;
-  width: 0.6ch;
-  height: 0.88em;
-  margin-left: 0.12em;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
-  vertical-align: -0.06em;
-  animation: blink 1.05s steps(1, end) infinite;
-}
-
-.hero-gauge {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.gauge-label {
-  white-space: nowrap;
-  color: var(--text-muted);
-}
-
-.gauge-track {
-  position: relative;
-  flex: 1;
-  max-width: 260px;
-  height: 8px;
-  border: 1px solid var(--line);
-  background: rgba(43, 255, 136, 0.04);
-  overflow: hidden;
-}
-
-.gauge-fill {
-  position: absolute;
-  inset: 0 100% 0 0;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--accent) 0,
-    var(--accent) 6px,
-    transparent 6px,
-    transparent 9px
-  );
-  box-shadow: 0 0 12px var(--accent-glow);
-  animation: gaugeFill 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
-}
-
 @keyframes gaugeFill {
   to {
     inset: 0 0 0 0;
   }
-}
-
-.gauge-val {
-  color: var(--accent);
-  font-weight: 600;
 }
 
 /* ================================================================
