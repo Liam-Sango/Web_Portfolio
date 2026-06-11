@@ -972,6 +972,7 @@ html[data-nerv] .contact-tile .tile-icon {
   font-size: 1.1rem;
   flex-shrink: 0;
   filter: grayscale(0.2);
+  color: var(--accent);
 }
 
 html[data-nerv] .contact-tile .tile-label {
@@ -2169,6 +2170,7 @@ main {
   font-size: 1.05rem;
   flex-shrink: 0;
   filter: none;
+  color: var(--text);
 }
 
 .contact-tile .tile-label {
