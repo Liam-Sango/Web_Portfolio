@@ -104,25 +104,42 @@ const projects: Project[] = [
     id: "credential-generator-c",
     title: "Credential Generator",
     description:
-      "A command-line credential generator written in pure C. Produces strong, randomised passwords with a configurable length and character set — a practical exercise in C string handling and randomness.",
-    tech: ["C"],
+      "A menu-driven C99 credential generator that produces cryptographically secure output using OpenSSL, with Unicode support via ICU. Generates passwords, passphrases, usernames, full names, random numbers, and custom Unicode strings.",
+    tech: ["C", "OpenSSL"],
     github: "https://github.com/Liam-Sango/Credential_Generator_C",
     date: "2025-11-20",
     content: `
-      <p>A command-line tool written in pure C that generates strong, random
-      credentials. You choose how long the password should be and which
-      character sets to draw from, and it assembles a randomised result.</p>
+      <p>A terminal-based C99 utility for generating randomised credentials and
+      identifiers. Rather than rolling its own randomness, it draws
+      cryptographically secure bytes from OpenSSL (<code>libssl</code> /
+      <code>libcrypto</code>), and handles UTF-8 through the ICU library.</p>
 
-      <h2>Features</h2>
+      <h2>Six generators</h2>
       <ul>
-        <li>Configurable password length.</li>
-        <li>Selectable character sets — letters, digits, and symbols.</li>
-        <li>Randomised output generated entirely in C.</li>
+        <li><strong>Password</strong> — random printable ASCII at a configurable
+        length.</li>
+        <li><strong>Passphrase</strong> — a configurable number of
+        space-separated words drawn from a wordlist.</li>
+        <li><strong>Username</strong> — <code>word1_word2_NNNN</code> from the
+        bundled word lists.</li>
+        <li><strong>Full name</strong> — first, middle, and surname from the
+        name lists.</li>
+        <li><strong>Random number</strong> — an integer in a user-defined
+        range.</li>
+        <li><strong>Custom Unicode string</strong> — a UTF-8 string over a
+        user-defined code-point range.</li>
       </ul>
 
-      <p>Writing it in C meant handling the character buffers and randomness by
-      hand, which made the mechanics of building a password generator far more
-      concrete than reaching for a high-level library would have.</p>
+      <p>Generators accept custom wordlist paths or fall back to the bundled
+      lists in <code>Files/</code>. The menu-driven interface lets you tune
+      lengths, ranges, and word counts per generator at runtime. Built and run
+      with a <code>makefile</code> (<code>make</code>, <code>make run</code>,
+      <code>make clean</code>); released under the GPLv3.</p>
+
+      <p>Wiring OpenSSL and ICU together by hand in C made the practical side of
+      "cryptographically secure" — sourcing real entropy and encoding it safely
+      across character sets — far more concrete than a high-level library would
+      have.</p>
     `,
   },
   {
