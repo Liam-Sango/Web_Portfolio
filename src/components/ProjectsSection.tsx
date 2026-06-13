@@ -13,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
         <p className="card-meta">{formatMonth(project.date)}</p>
       </div>
-      <p>{project.description}</p>
+      {project.description && <p>{project.description}</p>}
       <div className="badge-row">
         {project.tech.map((t) => (
           <span key={t} className="badge">

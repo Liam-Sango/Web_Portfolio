@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   tech: string[];
   github: string;
   liveUrl?: string;
@@ -171,41 +171,32 @@ const projects: Project[] = [
   {
     id: "weaver-offensive-sim-2",
     title: "Weaver · Offensive Simulation II",
-    description:
-      "The most developed module of my Weaver project: a custom stack-based bytecode VM and assembler, with planned steganography, encryption, key management, and decentralised (Arweave) storage. Actively in progress.",
     tech: ["Python"],
     github:
       "https://github.com/Liam-Sango/Weaver/tree/main/src/Project_3_Offensive_Sim_2",
     date: "2026-06-07",
     status: "in-progress",
-    content: `<p>An offensive-security simulation in active development. Check the
-    repository for the latest progress.</p>`,
+    content: "",
   },
   {
     id: "weaver-defensive-framework",
     title: "Weaver · Defensive Framework",
-    description:
-      "The defensive half of my Weaver project — an early-stage framework for defensive-security tooling. Currently in scaffolding.",
     tech: ["Python"],
     github:
       "https://github.com/Liam-Sango/Weaver/tree/main/src/project_1_Defensive_framework",
     date: "2026-05-22",
     status: "in-progress",
-    content: `<p>A defensive-security framework in its early stages. Check the
-    repository for the latest progress.</p>`,
+    content: "",
   },
   {
     id: "weaver-offensive-sim-1",
     title: "Weaver · Offensive Simulation I",
-    description:
-      "The first of two offensive-security simulations under the Weaver umbrella. Early-stage work in progress.",
     tech: ["Python"],
     github:
       "https://github.com/Liam-Sango/Weaver/tree/main/src/Project_2_Offensive_Sim_1",
     date: "2026-05-22",
     status: "in-progress",
-    content: `<p>An offensive-security simulation in its early stages. Check the
-    repository for the latest progress.</p>`,
+    content: "",
   },
 ];
 
