@@ -16,9 +16,9 @@ export default function HeroSection() {
       </p>
 
       <p className="hero-lead">
-        Still studying, and learning by building — small tools in C and Python
-        and a security project called Weaver. I&apos;m most interested in how
-        systems work under the hood, and how they break.
+        Studying and learning by building. Building my programming knowledge
+        from the ground up using plain C — with my first real project
+        &quot;Weaver&quot; already under active development.
       </p>
 
       <div className="btn-row">
