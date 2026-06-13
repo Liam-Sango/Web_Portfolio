@@ -25,17 +25,12 @@ export default function HeroSection() {
         <a href="#projects" className="btn btn--primary">
           View Projects →
         </a>
+        <a href="#about" className="btn btn--ghost">
+          About Me
+        </a>
         <a href="#contact" className="btn btn--ghost">
           Get in Touch
         </a>
-      </div>
-
-      <div className="hero-gauge" aria-hidden="true">
-        <span className="gauge-label">SYNCHRO RATIO</span>
-        <span className="gauge-track">
-          <span className="gauge-fill" />
-        </span>
-        <span className="gauge-val">100.0%</span>
       </div>
 
       <div className="hero-gauge" aria-hidden="true">
@@ -50,7 +45,7 @@ export default function HeroSection() {
         <span>
           <span className="status-dot" aria-hidden="true" /> Available for work
         </span>
-        <span>Remote · Australia</span>
+        <span>Melbourne · Victoria</span>
         <span>Last updated 2026.06</span>
       </div>
     </section>
