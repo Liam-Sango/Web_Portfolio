@@ -1,35 +1,12 @@
 import type { Metadata } from "next";
 import {
-  Chakra_Petch,
-  Saira,
-  JetBrains_Mono,
   Space_Grotesk,
   IBM_Plex_Sans,
   IBM_Plex_Mono,
 } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import NervLayer from "@/components/NervLayer";
 import "@/app/globals.css";
-
-// ---- NERV mode faces (angular terminal identity) ----
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-chakra",
-  weight: ["400", "500", "600", "700"],
-});
-const saira = Saira({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-saira",
-  weight: ["400", "500", "600", "700"],
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jetbrains",
-});
 
 // ---- Professional theme faces (Graphite & Phosphor) ----
 const spaceGrotesk = Space_Grotesk({
@@ -63,14 +40,13 @@ export const metadata: Metadata = {
   },
 };
 
-// "LS" glyph favicon — NERV-style: hazard-orange mark on black with a
-// notched (cut-corner) frame.
+// "LS" glyph favicon — accent mark on the site's dark panel color.
 const FAVICON =
   "data:image/svg+xml," +
   encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>` +
-      `<polygon points='4,4 78,4 96,22 96,96 22,96 4,78' fill='%230a0a0b' stroke='%232bff88' stroke-width='4'/>` +
-      `<text x='50' y='70' font-size='50' font-family='Arial, sans-serif' font-weight='700' text-anchor='middle' fill='%232bff88'>LS</text>` +
+      `<rect x='4' y='4' width='92' height='92' rx='12' fill='%2314161a' stroke='%235fae86' stroke-width='4'/>` +
+      `<text x='50' y='70' font-size='50' font-family='Arial, sans-serif' font-weight='700' text-anchor='middle' fill='%235fae86'>LS</text>` +
       `</svg>`,
   );
 
@@ -82,11 +58,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable} ${chakra.variable} ${saira.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <head>
         {/* Set the light/dark theme before first paint to avoid a flash. Reads
-            the saved choice, else the OS preference. Does NOT touch data-nerv. */}
+            the saved choice, else the OS preference. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
@@ -99,7 +75,6 @@ export default function RootLayout({
         <link rel="icon" href={FAVICON} />
       </head>
       <body>
-        <NervLayer />
         <NavBar />
         {children}
         <Footer />
