@@ -15,17 +15,13 @@ const projects: Project[] = [
     id: "portfolio-002",
     title: "002 — This Portfolio",
     description:
-      "The site you're looking at: a static Next.js portfolio with a hidden, Evangelion-inspired NERV mode. Built with AI assistance as a way to get hands-on with modern web tooling.",
+      "The site you're looking at: a static Next.js portfolio built with AI assistance as a way to get hands-on with modern web tooling.",
     tech: ["Next.js", "TypeScript", "React"],
     github: "https://github.com/Liam-Sango/Web_Portfolio",
     liveUrl: "https://liam-sango.github.io/Web_Portfolio/",
     date: "2026-06-08",
     content: `
-      <p><strong>This is the site you're currently looking at.</strong> It's a
-      statically-exported Next.js portfolio with a clean, professional layout —
-      and a hidden easter egg: type <code>nerv</code> anywhere on the page to
-      flip it into an Evangelion-inspired "NERV mode" with a boot sequence and a
-      HUD overlay.</p>
+      <p><strong>This is the site you're currently looking at.</strong> It's a statically-exported Next.js portfolio with a clean, professional layout, a light/dark theme, and a design system written in plain CSS.</p>
 
       <h2>Built with AI assistance</h2>
       <p>I built this project with significant help from AI tooling, and I want
