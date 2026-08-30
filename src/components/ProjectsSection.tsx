@@ -22,14 +22,14 @@ function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       <div className="card-links">
-        {!inProgress && (
+        {project.content && (
           <Link href={`/projects/${project.id}`} className="btn btn--primary">
             Case study →
           </Link>
         )}
         <a
           href={project.github}
-          className={`btn ${inProgress ? "btn--primary" : "btn--ghost"}`}
+          className={`btn ${!project.content ? "btn--primary" : "btn--ghost"}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -65,14 +65,6 @@ export default function ProjectsSection() {
         taught me something I carried into the next.
       </p>
 
-      {shipped.length > 0 && (
-        <div className="card-grid">
-          {shipped.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-      )}
-
       {inProgress.length > 0 && (
         <>
           <h3 className="group-heading">In Progress</h3>
@@ -82,6 +74,14 @@ export default function ProjectsSection() {
             ))}
           </div>
         </>
+      )}
+
+      {shipped.length > 0 && (
+        <div className="card-grid">
+          {shipped.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       )}
     </section>
   );

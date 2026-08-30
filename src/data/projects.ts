@@ -165,34 +165,75 @@ const projects: Project[] = [
     `,
   },
   {
-    id: "weaver-offensive-sim-2",
-    title: "Weaver · Offensive Simulation II",
-    tech: ["Python"],
-    github:
-      "https://github.com/Liam-Sango/Weaver/tree/main/src/Project_3_Offensive_Sim_2",
-    date: "2026-06-07",
+    id: "project-ratchet",
+    title: "Project Ratchet",
+    description:
+      "A defensive security research platform that pairs an adversary fixture — complete with AES-256-GCM encryption, key ratcheting, and steganography — with a detection framework for testing defensive telemetry and monitoring scenarios.",
+    tech: ["Python", "Cryptography"],
+    github: "https://github.com/Liam-Sango/Project-Ratchet",
+    date: "2026-08-31",
     status: "in-progress",
-    content: "",
-  },
-  {
-    id: "weaver-defensive-framework",
-    title: "Weaver · Defensive Framework",
-    tech: ["Python"],
-    github:
-      "https://github.com/Liam-Sango/Weaver/tree/main/src/project_1_Defensive_framework",
-    date: "2026-05-22",
-    status: "in-progress",
-    content: "",
-  },
-  {
-    id: "weaver-offensive-sim-1",
-    title: "Weaver · Offensive Simulation I",
-    tech: ["Python"],
-    github:
-      "https://github.com/Liam-Sango/Weaver/tree/main/src/Project_2_Offensive_Sim_1",
-    date: "2026-05-22",
-    status: "in-progress",
-    content: "",
+    content: `
+      <p>Project Ratchet is a security research platform I built to explore both
+      offensive and defensive techniques in a controlled environment. At its core,
+      it's a dual-purpose tool: an adversary simulation fixture that mimics
+      real-world attacker behaviour, paired with a defensive detection framework
+      that tests how well monitoring systems can spot that behaviour.</p>
+
+      <h2>The adversary fixture</h2>
+      <p>The offensive component implements a working command-and-control (C2)
+      protocol with production-grade cryptographic primitives:</p>
+      <ul>
+        <li><strong>AES-256-GCM encryption</strong> — authenticated encryption for
+        all communications between the agent and controller.</li>
+        <li><strong>Ratcheting key derivation</strong> — session keys are
+        ratcheted forward after each exchange using HKDF, so compromising one key
+        doesn't expose past or future sessions.</li>
+        <li><strong>LSB steganography</strong> — the ability to embed encrypted
+        payloads inside image files, making network traffic less conspicuous.</li>
+        <li><strong>Custom bytecode VM</strong> — a small stack-based virtual
+        machine that executes commands encoded as bytecode rather than plaintext,
+        adding another layer of obfuscation.</li>
+        <li><strong>Mock Arweave persistence</strong> — simulates storing and
+        retrieving payloads from a decentralised storage layer, mirroring how some
+        adversaries exfiltrate data or retrieve tooling.</li>
+      </ul>
+
+      <h2>The defensive framework</h2>
+      <p>The detection side is built to validate whether defensive tooling —
+      endpoint agents, network monitors, SIEM rules — can actually see what's
+      happening. It includes scenario templates like:</p>
+      <ul>
+        <li><strong>S1: Key stealing</strong> — detects when cryptographic keys
+        are accessed or exfiltrated from the system.</li>
+        <li><strong>S3: Corruption detection</strong> — flags when encrypted
+        payloads or configuration files are tampered with or fail integrity
+        checks.</li>
+      </ul>
+      <p>The framework generates telemetry events, correlates them with known
+      attack patterns, and outputs results that can be fed into a SIEM or analysed
+      directly. It's designed to answer the question: "If this happened on my
+      network, would I actually see it?"</p>
+
+      <h2>What it demonstrates</h2>
+      <p>Building Project Ratchet meant diving into cryptographic protocol design,
+      understanding how modern adversaries evade detection, and implementing the
+      defensive countermeasures that catch them. It's a research platform, not a
+      production tool — it's lab-only, deliberately scoped to learning and
+      testing.</p>
+      <p>The technical depth is the point: implementing key ratcheting by hand
+      forces you to understand forward secrecy in a way that using a library
+      doesn't. Writing the detection logic makes the gaps in conventional
+      monitoring painfully obvious. It's an exercise in thinking like both sides
+      of the engagement.</p>
+
+      <h2>Current status</h2>
+      <p>The core cryptographic and C2 functionality is complete, along with the
+      two primary detection scenarios. It's research-focused and intended for
+      controlled lab environments only — a way to test hypotheses about attacker
+      tradecraft and defensive visibility without the risks that come with
+      deploying real offensive tooling.</p>
+    `,
   },
 ];
 
