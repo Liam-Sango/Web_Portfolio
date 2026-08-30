@@ -12,6 +12,28 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    id: "undisclosed-project-1",
+    title: "Undisclosed Project 1",
+    description:
+      "The nature of some of my work means sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
+    tech: ["Undisclosed"],
+    github: "#",
+    date: "2026-08-31",
+    status: "in-progress",
+    content: "",
+  },
+  {
+    id: "undisclosed-project-2",
+    title: "Undisclosed Project 2",
+    description:
+      "The nature of some of my work means sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
+    tech: ["Undisclosed"],
+    github: "#",
+    date: "2026-08-31",
+    status: "in-progress",
+    content: "",
+  },
+  {
     id: "portfolio-002",
     title: "002 — This Portfolio",
     description:

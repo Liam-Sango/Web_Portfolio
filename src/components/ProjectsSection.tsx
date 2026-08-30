@@ -27,14 +27,16 @@ function ProjectCard({ project }: { project: Project }) {
             Case study →
           </Link>
         )}
-        <a
-          href={project.github}
-          className={`btn ${!project.content ? "btn--primary" : "btn--ghost"}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub ↗
-        </a>
+        {project.github && project.github !== "#" && (
+          <a
+            href={project.github}
+            className={`btn ${!project.content ? "btn--primary" : "btn--ghost"}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+        )}
         {project.liveUrl && (
           <a
             href={project.liveUrl}
@@ -77,11 +79,14 @@ export default function ProjectsSection() {
       )}
 
       {shipped.length > 0 && (
-        <div className="card-grid">
-          {shipped.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        <>
+          <h3 className="group-heading">Completed</h3>
+          <div className="card-grid">
+            {shipped.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </>
       )}
     </section>
   );
