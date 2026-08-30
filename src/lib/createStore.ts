@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from "react";
 
 // Minimal shared reactive store. Lets multiple components read and drive the
-// same value and re-render together — used by the theme and NERV-mode hooks so
-// the nav toggle, the footer glyph, and the keyword listener stay in sync.
+// same value and re-render together — used by the theme hook so all theme
+// controls stay in sync.
 export interface Store<T> {
   get: () => T;
   set: (next: T | ((prev: T) => T)) => void;
