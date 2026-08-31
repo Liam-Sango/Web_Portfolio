@@ -9,7 +9,7 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projects
-    .filter((project) => project.status !== "in-progress")
+    .filter((project) => project.content)
     .map((project) => ({ slug: project.id }));
 }
 
