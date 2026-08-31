@@ -23,12 +23,10 @@ const skills: SkillGroup[] = [
     category: "Things I'm currently learning",
     items: [
       "Cryptographic Systems Architecture",
-      "Smart Contract Development",
-      "Rust",
-      "WebAssembly",
       "System Administration",
-      "Claude Code",
-      "OpenClaw",
+      "Machine Learning",
+      "Theoretical Computer Security",
+      "Deployment of AI in Cybersecurity",
     ],
   },
 ];
