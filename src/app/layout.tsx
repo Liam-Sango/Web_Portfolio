@@ -1,31 +1,40 @@
 import type { Metadata } from "next";
-import {
-  Space_Grotesk,
-  IBM_Plex_Sans,
-  IBM_Plex_Mono,
-} from "next/font/google";
+import localFont from "next/font/local";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import "@/app/globals.css";
 
 // ---- Professional theme faces (Graphite & Phosphor) ----
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+// Self-hosted so production builds don't depend on Google Fonts.
+const spaceGrotesk = localFont({
+  src: "./fonts/SpaceGrotesk-Variable.woff2",
   display: "swap",
   variable: "--font-grotesk",
-  weight: ["400", "500", "600", "700"],
+  weight: "300 700",
+  style: "normal",
 });
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
+const plexSans = localFont({
+  src: "./fonts/IBMPlexSans-Variable.woff2",
   display: "swap",
   variable: "--font-plex-sans",
-  weight: ["400", "500", "600"],
+  weight: "100 700",
+  style: "normal",
 });
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
+const plexMono = localFont({
+  src: [
+    {
+      path: "./fonts/IBMPlexMono-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/IBMPlexMono-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-plex-mono",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
