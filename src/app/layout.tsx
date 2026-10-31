@@ -59,6 +59,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
         {/* Set the light/dark theme before first paint to avoid a flash. Reads

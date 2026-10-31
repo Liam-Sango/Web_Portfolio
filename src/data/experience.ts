@@ -1,7 +1,5 @@
 export interface Reference {
-  name: string;
   title: string;
-  phone: string;
 }
 
 export interface Experience {
@@ -27,9 +25,7 @@ const experience: Experience[] = [
     end: "Current",
     bullets: [],
     reference: {
-      name: "Reference Name",
       title: "Course Coordinator",
-      phone: "+61 400 000 000",
     },
   },
   {
@@ -41,9 +37,7 @@ const experience: Experience[] = [
     end: "Current",
     bullets: [],
     reference: {
-      name: "Reference Name",
       title: "Teacher",
-      phone: "+61 400 000 001",
     },
   },
   {
@@ -55,9 +49,7 @@ const experience: Experience[] = [
     end: "Sep 2025",
     bullets: [],
     reference: {
-      name: "Reference Name",
       title: "Program Supervisor",
-      phone: "+61 400 000 002",
     },
   },
 ];

@@ -13,10 +13,10 @@ export interface Project {
 const projects: Project[] = [
   {
     id: "undisclosed-project-1",
-    title: "Undisclosed Project 1",
+    title: "Project Panopticon",
     description:
-      "The nature of some of my work means sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
-    tech: ["Undisclosed"],
+      "Due to the nature of some of my work, sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
+    tech: ["Undisclosed", "Cybersecurity"],
     github: "#",
     date: "2026-08-31",
     status: "in-progress",
@@ -24,10 +24,10 @@ const projects: Project[] = [
   },
   {
     id: "undisclosed-project-2",
-    title: "Undisclosed Project 2",
+    title: "Project Cognesis",
     description:
-      "The nature of some of my work means sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
-    tech: ["Undisclosed"],
+      "Due to the nature of some of my work, sometimes a public release is not feasible. You may get access to these projects with direct contact and valid reasoning.",
+    tech: ["Undisclosed", "Machine Learning"],
     github: "#",
     date: "2026-08-31",
     status: "in-progress",

@@ -967,25 +967,12 @@ main {
   color: var(--accent);
 }
 
-.reference-name {
-  color: var(--text);
-  font-weight: 600;
-}
-
 .reference-title {
   color: var(--text-dim);
 }
 
-.reference-phone {
-  font-variant-numeric: tabular-nums;
+.reference-withheld {
   color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-}
-
-.reference-phone:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
 }
 
 /* ================================================================
